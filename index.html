@@ -5,7 +5,11 @@
   <title>CAPITAL</title>
   <link rel="stylesheet" href="style.css" type="text/stylesheet">
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+
+  
   
 </head>
 <body>
@@ -23,7 +27,7 @@
 
       <div id="share">
         <a id="tweet" href="https://twitter.com/intent/tweet"><img src="images/capital-social-twitter.png"></a>
-        <a id="tumbl" href="https://www.tumblr.com/share"><img src="images/capital-social-tumblr.png"></a>
+        <a id="tumblr" href="https://www.tumblr.com/share"><img src="images/capital-social-tumblr.png"></a>
         <a id="facebook" href="https://www.facebook.com/sharer/sharer.php?u="><img src="images/capital-social-facebook.png"></a>
 
         <img src="images/capital-share-this-quote.png" id="share-foot">
@@ -36,8 +40,9 @@
 
   <iframe src="" id="map"></iframe>
 
-  <div id="footer">
-    
+  <div id="tour-map"></div>
+
+  <div id="footer">   
     <img src="images/capital-books.png">
 
     <p>

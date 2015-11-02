@@ -83,3 +83,18 @@ body {
   color: #E70012;
 }
 
+#location, #start-message {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: 1em 0em;
+}
+
+/* Tour map */
+
+#tour-map {
+  margin: 2em 0em;
+  height: 500px;
+}

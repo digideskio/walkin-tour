@@ -8,8 +8,8 @@ var address = d3.select('#location');
 
 var hash = window.location.hash;
 
-d3.csv('data.csv', function(_data) {
-  loadTour(_data, 'Queer New York');
+d3.csv('data-1.csv', function(_data) {
+  loadTour(_data, 'Learning to Read New York');
 
   $('body').on('click', function(e) {
     nextPlace();
@@ -62,3 +62,21 @@ function go(i) {
   source.html(data[index]['Source']);
   address.text(data[index]['Location']);
 }
+
+// Tour map
+
+var longitude = 40.7127;
+var latitude = -74.0059;
+
+// var tourMap = L.map('tour-map').setView([longitude, latitude], 13);
+
+var tourMap = L.map('tour-map', {center: [longitude, latitude], zoom: 13});
+
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(tourMap);
+
+// L.marker([73.9597, 40.7903]).addTo(tourMap)
+//     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+//     .openPopup();
