@@ -1,0 +1,236 @@
+body {
+  font: 16px Times, serif;
+  margin: 0;
+}
+
+#container {
+  max-width: 700px;
+  margin: auto;
+  background-color: #fff;
+}
+
+#logo {
+  padding: 30px 0 0 0;
+}
+
+#logo img {
+  width: 100%;
+}
+
+#subheading {
+  font-family: Times;
+  font-style: italic;
+  font-size: 19px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: 1em 0em;
+}
+
+.small {
+  font-size: 10px;
+  padding-bottom: 1em;
+}
+
+#start-message {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: 1em 0em;
+  color: gray;
+}
+
+/* Navigation */
+
+#nav {
+  padding: 1em 0em;
+  border-top: 3px black solid;
+  border-bottom: 2px black solid;
+}
+
+select {
+  width: 300px;
+}
+
+#return-link {  
+  float: right;
+  font-style: none;
+  color: #E70012;
+  font-family: Arial;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .16em;
+  margin: 0em 0em 2em 0em;
+}
+
+/* Tour title */
+
+#tour-title img {
+  width: 100%;
+}
+
+#tour-title {
+  padding: .5em 0em;
+  border-bottom: 2px solid #ccc;
+}
+
+#tour-title h1 {
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+}
+
+/* Quote */
+
+#quote-holder {
+  clear: both;
+  overflow: auto;
+  margin: 1em 0em;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+}
+
+#quote-col {
+  float: left;
+  width: 65%;
+}
+
+#quote, #preview {
+  width: 100%;
+  float: left;
+  line-height: 1.3em;
+  font-size: 1.2em;
+  font-style: italic;
+  color: #666;
+  margin-bottom: .5em;
+}
+
+#quote {
+  display: none;
+}
+
+#read-more {
+  float: right;
+  color: #E70012;
+  font-family: Arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .16em;
+  margin: 1em 0em;
+  cursor: pointer;
+}
+
+#source {
+  float: left;
+  width: 70%;
+  font-family: Times;
+  padding-top: 2em;
+  margin-top: 2em;
+}
+
+/* Meta column */
+
+#meta {
+  float: right;
+  width: 25%;
+}
+
+#context {
+  font-family: Arial;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+
+#share {
+  margin-top: 40px;
+}
+
+#share a img {
+  width: 25px;
+  margin-right: 10px;
+}
+
+#share-foot {
+  display: block;
+  margin-top: 0.5em;
+  width: 100px;
+}
+
+/* Streetview map */
+
+#streetview {
+  margin-left: -35px;
+  width: 770px;
+}
+
+#map {
+  width: 700px;
+  height: 360px;
+  margin-right: 10px;
+  border: 0;
+  padding: 0;
+}
+
+#location {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: 1em 0em;
+}
+
+#forward, #backward {
+  padding-bottom: 180px;
+  width: 20px;
+  cursor: pointer;
+}
+
+#backward { 
+  margin-right: 10px;
+}
+
+/* Tour map */
+
+#tour-map {
+  margin: 1em 0em;
+  height: 400px;
+}
+
+/* Footer */
+
+#footer {
+  border-top: 2px solid #666;
+  padding: 1em 0em;
+  margin-bottom: 30px;
+}
+
+#book {
+  height: 60px;
+  float: left;
+}
+
+#footer p {
+  float: left;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #E70012;
+  margin: 1em;
+  padding-bottom: 2em;
+}
+
+img.footer-logo  {
+  float: right;
+  height: 60px;
+}
+
+img#nymag-footer-logo.footer-logo {
+  height: 45px;
+  margin: .5em;
+}

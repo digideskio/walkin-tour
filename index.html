@@ -1,0 +1,82 @@
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <title>CAPITAL</title>
+  <link rel="stylesheet" href="style.css" type="text/stylesheet">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  
+</head>
+<body>
+
+<div id="container">
+
+  <div id="logo"><img src="images/capital-header.png"></div>
+
+  <div id="subheading">
+    <span class="small">&diams;</span> 
+    World made by words
+    <span class="small">&diams;</span> 
+  </div>
+
+  <div id="nav">
+    <select id="select-tour">
+      <option value="">Select a walking tour</option>
+    <select>
+
+    <a id="return-link" href="/home.html">Return to Homepage</a>
+  </div>
+
+  <div id="tour-title">
+    <h1>Queer New York - LGBTQ Walking Tour</h1>
+  </div>
+
+  <div id="quote-holder">
+    <div id="quote-col">
+      <div id="preview"></div>
+      <div id="quote"></div>
+      <span id="read-more">Read More</span>
+      <div id="source"></div> 
+    </div>
+
+    <div id="meta">
+      <div id="context"></div>
+
+      <div id="share">
+        <a id="tweet" href="https://twitter.com/intent/tweet"><img src="images/capital-social-twitter.png"></a>
+        <a id="tumblr" href="https://www.tumblr.com/share"><img src="images/capital-social-tumblr.png"></a>
+        <a id="facebook" href="https://www.facebook.com/sharer/sharer.php?u="><img src="images/capital-social-facebook.png"></a>
+
+        <img src="images/capital-share-this-quote.png" id="share-foot">
+      </div>
+    </div>
+  </div>
+
+  <div id="location"></div>
+
+  <div id="streetview">
+    <img id="backward" src="/images/capital-red-circle-backward.png">
+    <iframe src="" id="map"></iframe>
+    <img id="forward" src="/images/capital-red-circle-forward.png">
+  </div>
+
+  <div id="tour-map"></div>
+
+  <div id="footer">   
+    <img id="book" src="images/capital-books.png">
+
+    <p><span style="color:#000">LEARN MORE ABOUT</span><br>
+    <em><strong>CAPITAL</strong>: NEW YORK, CAPITAL OF THE 20TH CENTURY</em><br> VERSO BOOKS </p>
+
+    <img class="footer-logo" src="images/capital-verso-logo.png">
+    <img class="footer-logo" id="nymag-footer-logo" src="images/capital-nymag.jpg">
+  </div>
+</div>
+
+<script src="main.js"></script>
+<script src="tourMap.js"></script>
+</body>
+</html>
