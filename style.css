@@ -49,6 +49,10 @@ body {
   border-bottom: 2px black solid;
 }
 
+select {
+  width: 300px;
+}
+
 #return-link {  
   float: right;
   font-style: none;
@@ -97,6 +101,7 @@ body {
 }
 
 #quote, #preview {
+  width: 100%;
   float: left;
   line-height: 1.3em;
   font-size: 1.2em;

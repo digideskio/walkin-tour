@@ -16,20 +16,21 @@ L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
 
 // Populate map with pins - better way to deal with empty data?
 
-d3.csv("data-1.csv", function (data) {
-  var idx = 0;
+d3.csv("data.csv", function (data) {
+  var index = 0;
+
   data.map(function (d) {
     if (d['Streetview Embed Code']) {
       var lat = parseFloat(d['Streetview Embed Code'].match(/1d(.*?)!/)[1]);
       var lng = parseFloat(d['Streetview Embed Code'].match(/2d(.*?)!/)[1]);
-      d['index'] = idx;
+      d['Index'] = index;
 
       if (lat && lng) {
         var marker = L.marker([lat, lng], {icon: redCircleIcon}).addTo(tourMap);
-        marker.on('click', function() { go(d['index'])});
+        marker.on('click', function() { go(d['Index'])});
       }
     }
-    idx += 1;
+    index += 1;
   });
 });
 

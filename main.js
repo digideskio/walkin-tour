@@ -10,7 +10,7 @@ var address = d3.select('#location');
 
 var hash = window.location.hash;
 
-d3.csv('data-1.csv', function(_data) {
+d3.csv('data.csv', function(_data) {
   loadTour(_data, 'Learning to Read New York');
 
   $('#forward').on('click', function(e) {
