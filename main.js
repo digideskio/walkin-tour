@@ -44,22 +44,19 @@ $(document).ready(function() {
 });
 
 function initializeMap() {
-  var ctrLongitude = 40.759081;
-  var ctrLatitude = -73.978492;
+  var ctrLat = 40.759081;
+  var ctrLng = -73.978492;
 
   var redCircleIcon = L.icon({ iconUrl: 'images/capital-red-circle-map.png',
                                iconSize: [18, 18]})
   var hereIcon = L.icon({ iconUrl: 'images/capital-walker.png',
                           iconSize: [100, 100]})
 
-
-  var tourMap = L.map('tour-map').setView([ctrLongitude, ctrLatitude], 13);
+  var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
 
   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-  }).addTo(tourMap);
-
-  L.marker([ctrLongitude, ctrLatitude], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);    
+  }).addTo(tourMap);    
 
   d3.csv("data.csv", function (data) {
     var index = 0;
@@ -68,6 +65,10 @@ function initializeMap() {
         var lat = parseFloat(d['Streetview Embed Code'].match(/1d(.*?)!/)[1]);
         var lng = parseFloat(d['Streetview Embed Code'].match(/2d(.*?)!/)[1]);
         d['Index'] = index;
+
+        if (index == window.location.hash.substring(1)) {
+           L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
+        }
 
         if (lat && lng) {
           var marker = L.marker([lat, lng], {icon: redCircleIcon}).addTo(tourMap);
