@@ -114,6 +114,9 @@ function go(i) {
   $("#source").html(tourData[index]['Source']);
   $("#location").html(tourData[index]['Location']);
   
+  $("#quote").hide();
+  $("#preview").show();
+  $("#read-more").html("Read More");
   ($("#quote").html() == '') ? $("#read-more").hide() : $("#read-more").show();
   
   window.location.hash = '#' + index;
