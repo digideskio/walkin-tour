@@ -1,15 +1,15 @@
+var tour = "Learning to Read New York"; 
+
 $(document).ready(function() {
 
   var data;
-  var tour = "Learning to Read New York";
   var index = 0;
-  var hash = window.location.hash;
 
-  $(document).on('change', '#select-tour', function(){
-    console.log($('#select-tour').val());
-    console.log("here is location:" + hash.substring(1));
-  });
+  // $(document).on('change', '#select-tour', function(){
+  //   tourFile = filename(tour);
+  // });
 
+  window.location.hash = '#' + index;
   var tourMap = initializeMap();
 
   d3.csv('data.csv', function(data) {
@@ -62,21 +62,11 @@ function populateMap(tourMap, tourData) {
                                iconSize: [18, 18],
                                iconAnchor: [18, 18],
                                className: 'locationIcon'});
-  var hereIcon = L.icon({ iconUrl: 'images/capital-walker.png',
-                          iconSize: [95, 95],
-                          iconAnchor: [80, 80],
-                          className: 'hereIcon'});
-
-  var hereLayer = new L.FeatureGroup();
 
   tourData.map(function (d) {
     if (d['Streetview Embed Code']) {
       var lat = parseFloat(d['Streetview Embed Code'].match(/1d(.*?)!/)[1]);
       var lng = parseFloat(d['Streetview Embed Code'].match(/2d(.*?)!/)[1]);
-
-      if (d['Index'] == window.location.hash.substring(1)) {
-        L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
-      }
 
       if (lat && lng) {
         var marker = L.marker([lat, lng], {icon: redCircleIcon}).addTo(tourMap);
@@ -85,7 +75,7 @@ function populateMap(tourMap, tourData) {
     }
   });
 
-  // setHereMarker(tourMap, tourData);
+  setHereMarker(tourMap, tourData);
 }
 
 function setHereMarker(tourMap, tourData) {
@@ -103,7 +93,6 @@ function loadTour(data, tour) {
   var tourIndex = 0;
 
   tourData = data.filter(function(d) {
-    // console.log(reformat(d['Tour']));
     return d['Tour'] == tour;
   });
 
@@ -157,6 +146,6 @@ function expand() {
   }
 }
 
-function reformat(title) {
-  return title.replace(/\s+/g, '-').toLowerCase();
-}
+// function filename(title) {
+//   return "data/" + title.replace(/\s+/g, '-').toLowerCase() + ".csv";
+// }
