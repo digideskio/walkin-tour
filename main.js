@@ -8,10 +8,9 @@ $(document).ready(function() {
   window.location.hash = '#' + index;
   var tourMap = initializeMap();
   loadFile();
-  
 
   $(document).on('change', '#select-tour', function(){
-    filename = 'data/' + ($('#select-tour').val()) + '.csv';
+    filename = 'data/' + $('#select-tour').val() + '.csv';
     console.log(filename);
     loadFile();
   });
@@ -36,18 +35,18 @@ $(document).ready(function() {
 
       go(window.location.hash.substring(1));
     });
-  }
+  
+    function prevPlace() {
+      index --;
+      if (index < 0) { index = tourData.length - 1; }
+      window.location.hash = '#' + index;
+    }
 
-  function prevPlace() {
-    index --;
-    if (index < 0) { index = tourData.length - 1; }
-    window.location.hash = '#' + index;
-  }
-
-  function nextPlace() {
-    index ++;
-    if (index > tourData.length - 1) { index = 0; }
-    window.location.hash = '#' + index;
+    function nextPlace() {
+      index ++;
+      if (index > tourData.length - 1) { index = 0; }
+      window.location.hash = '#' + index;
+    }
   }
 });
 
