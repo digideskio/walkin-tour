@@ -48,9 +48,11 @@ function initializeMap() {
   var ctrLng = -73.978492;
 
   var redCircleIcon = L.icon({ iconUrl: 'images/capital-red-circle-map.png',
-                               iconSize: [18, 18]})
+                               iconSize: [18, 18],
+                               iconAnchor: [18, 18]});
   var hereIcon = L.icon({ iconUrl: 'images/capital-walker.png',
-                          iconSize: [100, 100]})
+                          iconSize: [95, 95],
+                          iconAnchor: [80, 80]});
 
   var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
 
