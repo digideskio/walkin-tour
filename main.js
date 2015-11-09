@@ -20,13 +20,15 @@ $(document).ready(function() {
     $('#backward').on('click', function(e) { prevPlace(); });
     $('#read-more').on('click', function(e) { expand(); });
 
-    go(window.location.hash.substring(1));
-  });
+    $(window).on('hashchange', function() {
+      var locationNumber = parseInt(window.location.hash.substring(1));
+      var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
+      tourMap.setView(currentLocation);
+      $('.hereIcon').hide();
+      setHereMarker(tourMap, tourData);
+      go(window.location.hash.substring(1));
+    });
 
-  $(window).on('hashchange', function() {
-    var locationNumber = parseInt(window.location.hash.substring(1));
-    var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
-    tourMap.setView(currentLocation);
     go(window.location.hash.substring(1));
   });
 
@@ -58,10 +60,12 @@ function initializeMap() {
 function populateMap(tourMap, tourData) {
   var redCircleIcon = L.icon({ iconUrl: 'images/capital-red-circle-map.png',
                                iconSize: [18, 18],
-                               iconAnchor: [18, 18]});
+                               iconAnchor: [18, 18],
+                               className: 'locationIcon'});
   var hereIcon = L.icon({ iconUrl: 'images/capital-walker.png',
                           iconSize: [95, 95],
-                          iconAnchor: [80, 80]});
+                          iconAnchor: [80, 80],
+                          className: 'hereIcon'});
 
   var hereLayer = new L.FeatureGroup();
 
@@ -71,10 +75,7 @@ function populateMap(tourMap, tourData) {
       var lng = parseFloat(d['Streetview Embed Code'].match(/2d(.*?)!/)[1]);
 
       if (d['Index'] == window.location.hash.substring(1)) {
-        // var here = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
-        var hereMarker = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000});
-        hereLayer.addLayer(hereMarker);
-        tourMap.addLayer(hereLayer);
+        L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
       }
 
       if (lat && lng) {
@@ -83,6 +84,19 @@ function populateMap(tourMap, tourData) {
       }     
     }
   });
+
+  // setHereMarker(tourMap, tourData);
+}
+
+function setHereMarker(tourMap, tourData) {
+  var locationNumber = parseInt(window.location.hash.substring(1));
+  var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
+  var hereIcon = L.icon({ iconUrl: 'images/capital-walker.png',
+                        iconSize: [95, 95],
+                        iconAnchor: [80, 80],
+                        className: 'hereIcon'});
+
+  L.marker(currentLocation, {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
 }
 
 function loadTour(data, tour) {
