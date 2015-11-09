@@ -85,7 +85,7 @@ function loadTour(data, tour) {
   var tourIndex = 0;
 
   tourData = data.filter(function(d) {
-    console.log(reformat(d['Tour']));
+    // console.log(reformat(d['Tour']));
     return d['Tour'] == tour;
   });
 
@@ -114,6 +114,8 @@ function go(i) {
   $("#source").html(tourData[index]['Source']);
   $("#location").html(tourData[index]['Location']);
   
+  ($("#quote").html() == '') ? $("#read-more").hide() : $("#read-more").show();
+  
   window.location.hash = '#' + index;
 }
 
@@ -129,7 +131,7 @@ function expand() {
       $("#preview").show();
       $("#read-more").html("Read More");
     }
-  } 
+  }
 }
 
 function reformat(title) {
