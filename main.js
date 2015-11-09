@@ -5,9 +5,9 @@ $(document).ready(function() {
   var data;
   var index = 0;
 
-  // $(document).on('change', '#select-tour', function(){
-  //   tourFile = filename(tour);
-  // });
+  $(document).on('change', '#select-tour', function(){
+    console.log(filename(tour));
+  });
 
   window.location.hash = '#' + index;
   var tourMap = initializeMap();
@@ -146,6 +146,6 @@ function expand() {
   }
 }
 
-// function filename(title) {
-//   return "data/" + title.replace(/\s+/g, '-').toLowerCase() + ".csv";
-// }
+function filename(title) {
+  return "data/" + title.replace(/\s+/g, '-').toLowerCase() + ".csv";
+}
