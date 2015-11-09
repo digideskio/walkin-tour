@@ -10,6 +10,8 @@ $(document).ready(function() {
     console.log("here is location:" + hash.substring(1));
   });
 
+  var tourMap = initializeMap();
+
   d3.csv('data.csv', function(data) {
     var tourData = loadTour(data, tour);
 
@@ -24,21 +26,15 @@ $(document).ready(function() {
     go(window.location.hash.substring(1));
   });
 
-  initializeMap();
-
   function prevPlace() {
     index --;
-    if (index < 0) {
-      index = tourData.length - 1;
-    }
+    if (index < 0) { index = tourData.length - 1; }
     window.location.hash = '#' + index;
   }
 
   function nextPlace() {
     index ++;
-    if (index > tourData.length - 1) {
-      index = 0;
-    }
+    if (index > tourData.length - 1) { index = 0; }
     window.location.hash = '#' + index;
   }
 });
@@ -47,6 +43,18 @@ function initializeMap() {
   var ctrLat = 40.759081;
   var ctrLng = -73.978492;
 
+  var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
+
+  L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+  }).addTo(tourMap);    
+
+  populateMap(tourMap);
+
+  return tourMap;
+}
+
+function populateMap(tourMap) {
   var redCircleIcon = L.icon({ iconUrl: 'images/capital-red-circle-map.png',
                                iconSize: [18, 18],
                                iconAnchor: [18, 18]});
@@ -54,11 +62,7 @@ function initializeMap() {
                           iconSize: [95, 95],
                           iconAnchor: [80, 80]});
 
-  var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
-
-  L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-  }).addTo(tourMap);    
+  var hereLayer = new L.FeatureGroup();
 
   d3.csv("data.csv", function (data) {
     var index = 0;
@@ -69,7 +73,10 @@ function initializeMap() {
         d['Index'] = index;
 
         if (index == window.location.hash.substring(1)) {
-           L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
+          // var here = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
+          var hereMarker = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000});
+          hereLayer.addLayer(hereMarker);
+          tourMap.addLayer(hereLayer);
         }
 
         if (lat && lng) {
