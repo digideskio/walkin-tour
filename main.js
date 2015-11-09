@@ -1,36 +1,42 @@
-var tour = "Learning to Read New York"; 
+var tour = "Learning to Read New York";
+var filename = filename(tour); 
 
 $(document).ready(function() {
 
   var data;
   var index = 0;
-
-  $(document).on('change', '#select-tour', function(){
-    console.log(filename(tour));
-  });
-
   window.location.hash = '#' + index;
   var tourMap = initializeMap();
+  loadFile();
+  
 
-  d3.csv('data.csv', function(data) {
-    var tourData = loadTour(data, tour);
-    populateMap(tourMap, tourData);
+  $(document).on('change', '#select-tour', function(){
+    filename = 'data/' + ($('#select-tour').val()) + '.csv';
+    console.log(filename);
+    loadFile();
+  });
+  
+  function loadFile() { 
+    d3.csv(filename, function(data) {
+      var tourData = loadTour(data);
+      populateMap(tourMap, tourData);
 
-    $('#forward').on('click', function(e) { nextPlace(); });
-    $('#backward').on('click', function(e) { prevPlace(); });
-    $('#read-more').on('click', function(e) { expand(); });
+      $('#forward').on('click', function(e) { nextPlace(); });
+      $('#backward').on('click', function(e) { prevPlace(); });
+      $('#read-more').on('click', function(e) { expand(); });
 
-    $(window).on('hashchange', function() {
-      var locationNumber = parseInt(window.location.hash.substring(1));
-      var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
-      tourMap.setView(currentLocation);
-      $('.hereIcon').hide();
-      setHereMarker(tourMap, tourData);
+      $(window).on('hashchange', function() {
+        var locationNumber = parseInt(window.location.hash.substring(1));
+        var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
+        tourMap.setView(currentLocation);
+        $('.hereIcon').hide();
+        setHereMarker(tourMap, tourData);
+        go(window.location.hash.substring(1));
+      });
+
       go(window.location.hash.substring(1));
     });
-
-    go(window.location.hash.substring(1));
-  });
+  }
 
   function prevPlace() {
     index --;
@@ -89,14 +95,10 @@ function setHereMarker(tourMap, tourData) {
   L.marker(currentLocation, {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
 }
 
-function loadTour(data, tour) {
+function loadTour(data) {
   var tourIndex = 0;
 
-  tourData = data.filter(function(d) {
-    return d['Tour'] == tour;
-  });
-
-  tourData = tourData.map(function(d) {
+  tourData = data.map(function(d) {
     d.embed = d['Streetview Embed Code'].match(/src="(.*?)"/)[1];
     d.lat = d['Streetview Embed Code'].match(/1d(.*?)!/)[1];
     d.lng = d['Streetview Embed Code'].match(/2d(.*?)!/)[1];
