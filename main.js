@@ -14,15 +14,22 @@ $(document).ready(function() {
 
   d3.csv('data.csv', function(data) {
     var tourData = loadTour(data, tour);
+    populateMap(tourMap, tourData);
 
     $('#forward').on('click', function(e) { nextPlace(); });
     $('#backward').on('click', function(e) { prevPlace(); });
     $('#read-more').on('click', function(e) { expand(); });
 
-    $(window).on('hashchange', function() {
-      go(window.location.hash.substring(1));
-    });
+    var locationNumber = parseInt(window.location.hash.substring(1));
+    var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
+    tourMap.setView(currentLocation);
+    go(window.location.hash.substring(1));
+  });
 
+  $(window).on('hashchange', function() {
+    var locationNumber = parseInt(window.location.hash.substring(1));
+    var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
+    tourMap.setView(currentLocation);
     go(window.location.hash.substring(1));
   });
 
@@ -42,19 +49,16 @@ $(document).ready(function() {
 function initializeMap() {
   var ctrLat = 40.759081;
   var ctrLng = -73.978492;
-
   var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
 
   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
   }).addTo(tourMap);    
 
-  populateMap(tourMap);
-
   return tourMap;
 }
 
-function populateMap(tourMap) {
+function populateMap(tourMap, tourData) {
   var redCircleIcon = L.icon({ iconUrl: 'images/capital-red-circle-map.png',
                                iconSize: [18, 18],
                                iconAnchor: [18, 18]});
@@ -64,29 +68,23 @@ function populateMap(tourMap) {
 
   var hereLayer = new L.FeatureGroup();
 
-  d3.csv("data.csv", function (data) {
-    var index = 0;
-    data.map(function (d) {
-      if (d['Streetview Embed Code']) {
-        var lat = parseFloat(d['Streetview Embed Code'].match(/1d(.*?)!/)[1]);
-        var lng = parseFloat(d['Streetview Embed Code'].match(/2d(.*?)!/)[1]);
-        d['Index'] = index;
+  tourData.map(function (d) {
+    if (d['Streetview Embed Code']) {
+      var lat = parseFloat(d['Streetview Embed Code'].match(/1d(.*?)!/)[1]);
+      var lng = parseFloat(d['Streetview Embed Code'].match(/2d(.*?)!/)[1]);
 
-        if (index == window.location.hash.substring(1)) {
-          // var here = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
-          var hereMarker = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000});
-          hereLayer.addLayer(hereMarker);
-          tourMap.addLayer(hereLayer);
-        }
-
-        if (lat && lng) {
-          var marker = L.marker([lat, lng], {icon: redCircleIcon}).addTo(tourMap);
-          marker.on('click', function() { go(d['Index'])});
-        }     
-    
+      if (d['Index'] == window.location.hash.substring(1)) {
+        // var here = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
+        var hereMarker = L.marker([lat, lng], {icon: hereIcon, zIndexOffset: 1000});
+        hereLayer.addLayer(hereMarker);
+        tourMap.addLayer(hereLayer);
       }
-      index += 1;
-    });
+
+      if (lat && lng) {
+        var marker = L.marker([lat, lng], {icon: redCircleIcon}).addTo(tourMap);
+        marker.on('click', function() { go(d['Index'])});
+      }     
+    }
   });
 }
 
@@ -106,6 +104,8 @@ function loadTour(data, tour) {
     d['Preview'] = d['Preview'].replace('\n', '<br>');
     d['Quote'] = d['Quote'].replace('\n', '<br>');
     d['Source'] = d['Source'].replace('\n', '<br>');
+    d['Index'] = tourIndex;
+    tourIndex ++;
     return d;
   });
 
