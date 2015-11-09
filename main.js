@@ -20,9 +20,6 @@ $(document).ready(function() {
     $('#backward').on('click', function(e) { prevPlace(); });
     $('#read-more').on('click', function(e) { expand(); });
 
-    var locationNumber = parseInt(window.location.hash.substring(1));
-    var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
-    tourMap.setView(currentLocation);
     go(window.location.hash.substring(1));
   });
 
