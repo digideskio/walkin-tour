@@ -4,25 +4,22 @@ var filename = filename(tour);
 $(document).ready(function() {
 
   var data;
-  var index = 0;
-  window.location.hash = '#' + index;
+  window.location.hash = '#' + 0;
   var tourMap = initializeMap();
   loadFile();
 
   $(document).on('change', '#select-tour', function(){
     filename = 'data/' + $('#select-tour').val() + '.csv';
     console.log(filename);
+    window.location.hash = '#' + 0;
     loadFile();
   });
   
-  function loadFile() { 
+  function loadFile() {
     d3.csv(filename, function(data) {
       var tourData = loadTour(data);
       populateMap(tourMap, tourData);
-
-      $('#forward').on('click', function(e) { nextPlace(); });
-      $('#backward').on('click', function(e) { prevPlace(); });
-      $('#read-more').on('click', function(e) { expand(); });
+      go(window.location.hash.substring(1));
 
       $(window).on('hashchange', function() {
         var locationNumber = parseInt(window.location.hash.substring(1));
@@ -32,21 +29,25 @@ $(document).ready(function() {
         setHereMarker(tourMap, tourData);
         go(window.location.hash.substring(1));
       });
-
-      go(window.location.hash.substring(1));
     });
+  }
   
-    function prevPlace() {
-      index --;
-      if (index < 0) { index = tourData.length - 1; }
-      window.location.hash = '#' + index;
-    }
+  $('#forward').on('click', function(e) { nextPlace(); });
+  $('#backward').on('click', function(e) { prevPlace(); });
+  $('#read-more').on('click', function(e) { expand(); });
 
-    function nextPlace() {
-      index ++;
-      if (index > tourData.length - 1) { index = 0; }
-      window.location.hash = '#' + index;
-    }
+  function prevPlace() {
+    var prev = parseInt(window.location.hash.substring(1)) - 1;
+    console.log(prev);
+    if (prev < 0) { prev = tourData.length - 1; }
+    go(prev);
+  }
+
+  function nextPlace() {
+    var next = parseInt(window.location.hash.substring(1)) + 1;
+    console.log(next);
+    if (next > tourData.length - 1) { next = 0; }
+    go(next);
   }
 });
 
@@ -118,6 +119,7 @@ function go(i) {
   index = i;
   
   $("#map").attr('src', tourData[index].embed);
+  $("#tour-title").html(tourData[index]['Tour']);
   $("#quote").html(tourData[index]['Quote']);
   $("#preview").html(tourData[index]['Preview']);
   $("#context").html(tourData[index]['Context']);

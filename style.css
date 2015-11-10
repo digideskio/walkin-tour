@@ -73,11 +73,8 @@ select {
 }
 
 #tour-title {
-  padding: .5em 0em;
+  padding: 1em 0em;
   border-bottom: 2px solid #ccc;
-}
-
-#tour-title h1 {
   font-size: 13px;
   font-family: Arial;
   font-weight: bold;
