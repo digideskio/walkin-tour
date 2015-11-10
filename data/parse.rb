@@ -11,7 +11,7 @@ CSV.foreach("data.csv", :headers => true) do |row|
   tour_file = to_filename(row['Tour'])
   headers = row.headers
 
-  unless tour_file.nil?
+  # unless tour_file.nil?
     if File.exists?(tour_file)
       CSV.open(tour_file, "a+") do |csv| 
         csv << row
@@ -22,6 +22,6 @@ CSV.foreach("data.csv", :headers => true) do |row|
         csv << row
       end
     end
-  end
+  # end
 end
 

@@ -25,9 +25,13 @@
   <div id="nav">
     <select id="select-tour">
       <option value="">Select a walking tour</option>
-      <option value="learning-to-read-new-york">Learning to Read New York</option>
-      <option value="landmarks">Landmarks</option>
+      <option value="alone-together">Alone Together</option>
+      <option value="animal-new-york">Animal New York</opton>
       <option value="city-on-fire">City on Fire</option>
+      <option value="landmarks">Landmarks</option>
+      <option value="learning-to-read-new-york">Learning to Read New York</option>
+      <option value="politics">Politics</option>
+
     <select>
 
     <!-- GitHub pages return link -->
@@ -43,32 +47,33 @@
   </div>
 
   <div id="location"></div>
+  <img id="forward" src="images/capital-red-circle-forward.png">
 
   <div id="streetview">
-    <img id="backward" src="images/capital-red-circle-backward.png">
+    <!-- <img id="backward" src="images/capital-red-circle-backward.png"> -->
     <iframe src="" id="map"></iframe>
-    <img id="forward" src="images/capital-red-circle-forward.png">
+    <!-- <img id="forward" src="images/capital-red-circle-forward.png"> -->
+  </div>
+
+  <div id="meta">
+    <div id="share">
+      <a id="tweet" href="https://twitter.com/intent/tweet"><img src="images/capital-social-twitter.png"></a>
+      <a id="tumblr" href="https://www.tumblr.com/share"><img src="images/capital-social-tumblr.png"></a>
+      <a id="facebook" href="https://www.facebook.com/sharer/sharer.php?u="><img src="images/capital-social-facebook.png"></a>
+
+      <img src="images/capital-share-this-quote.png" id="share-foot">
+    </div>
+    <div id="context"></div>
   </div>
 
   <div id="quote-holder">
-    <div id="quote-col">
-      <div id="preview"></div>
-      <div id="quote"></div>
-      <span id="read-more">Read More</span>
-      <div id="source"></div> 
-    </div>
+    <img id="quote-top" src="images/quote-top.png"></img>
+    <span id="preview"></span>
+    <span id="quote"></span>
+    <span id="read-more">Read More</span>
+    <div id="source"></div>  
+    <img id="quote-bottom" src="images/quote-bottom.png"></img>
 
-    <div id="meta">
-      <div id="context"></div>
-
-      <div id="share">
-        <a id="tweet" href="https://twitter.com/intent/tweet"><img src="images/capital-social-twitter.png"></a>
-        <a id="tumblr" href="https://www.tumblr.com/share"><img src="images/capital-social-tumblr.png"></a>
-        <a id="facebook" href="https://www.facebook.com/sharer/sharer.php?u="><img src="images/capital-social-facebook.png"></a>
-
-        <img src="images/capital-share-this-quote.png" id="share-foot">
-      </div>
-    </div>
   </div>
 
   <div id="tour-map"></div>
@@ -78,7 +83,7 @@
 
     <p><span style="color:#000">LEARN MORE ABOUT</span><br>
     <em><strong>CAPITAL</strong>: NEW YORK, CAPITAL OF THE 20TH CENTURY</em><br> VERSO BOOKS </p>
-    
+
     <img class="footer-logo" id="gothamist-footer-logo" src="images/gothamist-logo.png">
   </div>
 </div>
