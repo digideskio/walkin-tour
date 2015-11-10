@@ -9,7 +9,8 @@ def to_filename(tour_title)
 end
 
 Dir.chdir "data" do
-  (Dir["../tmp/*.csv"]).each { |f| File.delete(f) }
+  `mkdir -p ../tmp/data`
+  (Dir["../tmp/data/*.csv"]).each { |f| File.delete(f) }
 
   def blank?(embed)
     embed.nil? || embed.strip.empty?
@@ -17,7 +18,7 @@ Dir.chdir "data" do
 
   CSV.foreach("data.csv", :headers => true) do |row|
     unless blank?(row['Streetview Embed Code'])
-      tour_file = '../tmp/' + to_filename(row['Tour'])
+      tour_file = '../tmp/data/' + to_filename(row['Tour'])
       if File.exists?(tour_file)
         CSV.open(tour_file, "a+") do |csv|
           csv << row
