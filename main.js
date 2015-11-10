@@ -38,14 +38,12 @@ $(document).ready(function() {
 
   function prevPlace() {
     var prev = parseInt(window.location.hash.substring(1)) - 1;
-    console.log(prev);
     if (prev < 0) { prev = tourData.length - 1; }
     go(prev);
   }
 
   function nextPlace() {
     var next = parseInt(window.location.hash.substring(1)) + 1;
-    console.log(next);
     if (next > tourData.length - 1) { next = 0; }
     go(next);
   }
