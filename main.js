@@ -64,7 +64,6 @@ function initializeMap() {
 function populateMap(tourMap, tourData) {
   var redCircleIcon = L.icon({ iconUrl: 'images/capital-red-circle-map.png',
                                iconSize: [18, 18],
-                               iconAnchor: [18, 18],
                                className: 'locationIcon'});
 
   tourData.map(function (d) {
@@ -86,8 +85,7 @@ function setHereMarker(tourMap, tourData) {
   var locationNumber = parseInt(window.location.hash.substring(1));
   var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
   var hereIcon = L.icon({ iconUrl: 'images/capital-walker.png',
-                        iconSize: [95, 95],
-                        iconAnchor: [80, 80],
+                        iconSize: [30, 30],
                         className: 'hereIcon'});
 
   L.marker(currentLocation, {icon: hereIcon, zIndexOffset: 1000}).addTo(tourMap);
