@@ -2,6 +2,7 @@ deploy:
 	mkdir -p tmp
 	cp index.html tmp/
 	cp embed.html tmp/
+	cp example.html tmp/
 	cp style.css tmp/
 	cp embed.css tmp/
 	cp main.js tmp/
