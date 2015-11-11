@@ -1,0 +1,114 @@
+body {
+  font: 16px Times, serif;
+  margin: 0;
+}
+
+#container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1em;
+  background-color: #fff;
+}
+
+#logo {
+  padding: 30px 0 0 0;
+}
+
+#logo img {
+  width: 100%;
+}
+
+#subheading {
+  font-family: Times;
+  font-style: italic;
+  font-size: 19px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: 1em 0em;
+}
+
+.small {
+  font-size: 10px;
+  padding-bottom: 1em;
+}
+
+#start-message {
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: 1em 0em;
+  color: gray;
+}
+
+/* Navigation */
+
+#nav {
+  padding: 1em 0em;
+  border-top: 3px black solid;
+  border-bottom: 2px black solid;
+}
+
+
+#return-link {  
+  float: right;
+  font-style: none;
+  color: #E70012;
+  font-family: Arial;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: .16em;
+  margin: 0em 0em 2em 0em;
+}
+
+/* Tour title */
+
+#tour-title img {
+  width: 100%;
+}
+
+#tour-title {
+  padding: 1em 0em;
+  border-bottom: 2px solid #ccc;
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+}
+
+/* Streetview map */
+
+#streetview {
+  float: right;
+  width: 50%;
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+  border: 0;
+  padding: 0;
+}
+
+#location {
+  display: inline;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: 2em 0em;
+}
+
+/* Tour map */
+
+#tour-map {
+  margin: 1em 0em;
+  height: 500px;
+}
+
+
