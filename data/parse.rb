@@ -12,12 +12,12 @@ Dir.chdir "data" do
   `mkdir -p ../tmp/data`
   (Dir["../tmp/data/*.csv"]).each { |f| File.delete(f) }
 
-  def blank?(embed)
-    embed.nil? || embed.strip.empty?
+  def bad_streetview?(embed)
+    embed.nil? || embed.strip.empty? || !embed.include?("https://www.google.com/maps/embed?pb=")
   end
 
   CSV.foreach("data.csv", :headers => true) do |row|
-    unless blank?(row['Streetview Embed Code'])
+    unless bad_streetview?(row['Streetview Embed Code'])
       tour_file = '../tmp/data/' + to_filename(row['Tour'])
       if File.exists?(tour_file)
         CSV.open(tour_file, "a+") do |csv|
