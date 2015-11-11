@@ -1,4 +1,4 @@
-var tour = "Learning to Read New York";
+var tour = "Landmarks";
 var filename = filename(tour); 
 
 $(document).ready(function() {
@@ -24,6 +24,7 @@ $(document).ready(function() {
       $(window).on('hashchange', function() {
         var locationNumber = parseInt(window.location.hash.substring(1));
         var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
+        console.log(currentLocation);
         tourMap.setView(currentLocation);
         $('.hereIcon').hide();
         setHereMarker(tourMap, tourData);
@@ -50,8 +51,8 @@ $(document).ready(function() {
 });
 
 function initializeMap() {
-  var ctrLat = 40.759081;
-  var ctrLng = -73.978492;
+  var ctrLat = 40.70702792793145;
+  var ctrLng = -73.99036895060463;
   var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
 
   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
