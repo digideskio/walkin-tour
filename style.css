@@ -44,6 +44,7 @@ body {
 /* Navigation */
 
 #nav {
+  display: none;
   padding: 1em 0em;
   border-top: 3px black solid;
   border-bottom: 2px black solid;
@@ -182,13 +183,13 @@ img#quote-bottom {
 
 #location {
   width: 50%;
-  display: inline;
+  float: left;
   font-family: Arial;
   font-weight: bold;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: .16em;
-  margin: 2em 0em;
+  margin-top: 1em;
 }
 
 #forward, #backward {
@@ -197,6 +198,7 @@ img#quote-bottom {
 }
 
 #forward {
+  margin: 1em 0em;
   float: right;
 }
 
@@ -222,6 +224,14 @@ img#quote-bottom {
 #book {
   height: 60px;
   float: left;
+}
+
+#book-link {
+  text-decoration: none;
+}
+
+#footer a:hover, a:visited {
+  color: red;
 }
 
 #footer p {

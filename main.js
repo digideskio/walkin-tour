@@ -24,7 +24,6 @@ $(document).ready(function() {
       $(window).on('hashchange', function() {
         var locationNumber = parseInt(window.location.hash.substring(1));
         var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
-        console.log(currentLocation);
         tourMap.setView(currentLocation);
         $('.hereIcon').hide();
         setHereMarker(tourMap, tourData);
@@ -116,6 +115,7 @@ function loadTour(data) {
 function go(i) {
   if (typeof i != 'number') i = +i;
   index = i;
+  var link = "https://s3.amazonaws.com/goldsmith-walkin-tours/index.html#" + i;
   
   $("#map").attr('src', tourData[index].embed);
   $("#tour-title").html(tourData[index]['Tour']);
@@ -124,12 +124,13 @@ function go(i) {
   $("#context").html(tourData[index]['Context']);
   $("#source").html(tourData[index]['Source']);
   $("#location").html(tourData[index]['Location']);
-  
+  $("#location-link").attr("href", link);
+
   $("#quote").hide();
   $("#preview").show();
   $("#read-more").html("Read More");
   ($("#quote").html() == '') ? $("#read-more").hide() : $("#read-more").show();
-  
+
   window.location.hash = '#' + index;
 }
 

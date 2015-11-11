@@ -70,3 +70,12 @@ body {
   width: 50%;
   height: 400px;
 }
+
+/* Location link */
+
+ a#location-link, a:hover, a:visited {
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+  text-decoration: none;
+}
