@@ -1,5 +1,5 @@
 var tour = "Landmarks";
-var filename = filename(tour); 
+var filename = filename(tour);
 
 $(document).ready(function() {
 
@@ -14,7 +14,7 @@ $(document).ready(function() {
     window.location.hash = '#' + 0;
     loadFile();
   });
-  
+
   function loadFile() {
     d3.csv(filename, function(data) {
       var tourData = loadTour(data);
@@ -31,7 +31,7 @@ $(document).ready(function() {
       });
     });
   }
-  
+
   $('#forward').on('click', function(e) { nextPlace(); });
   $('#backward').on('click', function(e) { prevPlace(); });
   $('#read-more').on('click', function(e) { expand(); });
@@ -56,13 +56,13 @@ function initializeMap() {
 
   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
-  }).addTo(tourMap);    
+  }).addTo(tourMap);
 
   return tourMap;
 }
 
 function populateMap(tourMap, tourData) {
-  var redCircleIcon = L.icon({ iconUrl: 'images/capital-red-circle-map.png',
+  var redCircleIcon = L.icon({ iconUrl: '../images/capital-red-circle-map.png',
                                iconSize: [18, 18],
                                className: 'locationIcon'});
 
@@ -74,7 +74,7 @@ function populateMap(tourMap, tourData) {
       if (lat && lng) {
         var marker = L.marker([lat, lng], {icon: redCircleIcon}).addTo(tourMap);
         marker.on('click', function() { go(d['Index'])});
-      }     
+      }
     }
   });
 
@@ -84,7 +84,7 @@ function populateMap(tourMap, tourData) {
 function setHereMarker(tourMap, tourData) {
   var locationNumber = parseInt(window.location.hash.substring(1));
   var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
-  var hereIcon = L.icon({ iconUrl: 'images/capital-walker.png',
+  var hereIcon = L.icon({ iconUrl: '../images/capital-walker.png',
                         iconSize: [30, 30],
                         className: 'hereIcon'});
 
@@ -114,7 +114,7 @@ function go(i) {
   if (typeof i != 'number') i = +i;
   index = i;
   var link = "http://capital-newyork.com/index.html#" + i;
-  
+
   $("#map").attr('src', tourData[index].embed);
   $("#tour-title").html(tourData[index]['Tour']);
   $("#quote").html(tourData[index]['Quote']);
@@ -148,5 +148,5 @@ function expand() {
 }
 
 function filename(title) {
-  return "data/" + title.replace(/\s+/g, '-').toLowerCase() + ".csv";
+  return "../data/" + title.replace(/\s+/g, '-').toLowerCase() + ".csv";
 }
