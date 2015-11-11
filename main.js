@@ -133,7 +133,7 @@ function go(i) {
   $("#map").attr('src', tourData[index].embed);
   $("#tour-title").html(tourData[index]['Tour']);
   $("#quote").html(tourData[index]['Quote']);
-  $("#preview").html(tourData[index]['Preview']);
+  $("#preview").html(tourData[index]['Preview'] + '...');
   $("#context").html(tourData[index]['Context']);
   $("#source").html(tourData[index]['Source']);
   $("#location").html(tourData[index]['Location']);
@@ -141,7 +141,7 @@ function go(i) {
 
   $("#quote").hide();
   $("#preview").show();
-  $("#read-more").html("Read More");
+  $("#read-more").html("Read more");
   ($("#quote").html() == '') ? $("#read-more").hide() : $("#read-more").show();
 
   window.location.hash = '#' + index;
@@ -150,14 +150,14 @@ function go(i) {
 function expand() {
   if ($("#quote").text() != "") {
     $("#read-more").show();
-    if ($("#read-more").html() == "Read More") {
+    if ($("#read-more").html() == "Read more") {
       $("#preview").hide();
       $("#quote").show();
-      $("#read-more").html("Read Less");
+      $("#read-more").html("Read less");
     } else {
       $("#quote").hide();
       $("#preview").show();
-      $("#read-more").html("Read More");
+      $("#read-more").html("Read more");
     }
   }
 }
