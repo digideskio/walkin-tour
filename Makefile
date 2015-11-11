@@ -8,7 +8,7 @@ deploy:
 	cp main.js tmp/
 	cp -R images tmp/
 	ruby data/parse.rb
-	aws s3 sync tmp/ s3://goldsmith-walkin-tours --delete --profile walkin
+	aws s3 sync tmp/ s3://capital-newyork.com --delete --profile walkin
 
 clean:
 	rm -rf tmp/

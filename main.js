@@ -113,7 +113,7 @@ function loadTour(data) {
 function go(i) {
   if (typeof i != 'number') i = +i;
   index = i;
-  var link = "https://s3.amazonaws.com/goldsmith-walkin-tours/index.html#" + i;
+  var link = "http://capital-newyork.com/index.html#" + i;
   
   $("#map").attr('src', tourData[index].embed);
   $("#tour-title").html(tourData[index]['Tour']);
