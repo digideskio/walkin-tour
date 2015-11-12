@@ -145,7 +145,11 @@ function go(i) {
   $("#location-link").attr("href", link);
 
   $("#tweet").attr("href", "https://twitter.com/intent/tweet?text="+ location + "&url=" + encoded);
-  $("#tumblr").attr("href", "https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=&url=" + encoded + "&posttype=quote&caption=" + encodeURIComponent(source) + "&content=" + encodeURI(preview));
+  $("#tumblr").attr("href",
+      "https://www.tumblr.com/widgets/share/tool?shareSource=legacy&canonicalUrl=" +
+      "&url=" + encoded + "&posttype=quote" +
+      "&caption=" + encodeURIComponent("<a href='" + link + "'>" + source + "</a>") +
+      "&content=" + encodeURI(preview));
   $("#facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + encoded);
   $('meta[property="og:title"]').attr('content', tourData[index]['Location']);
   $('meta[property="og:url"]').attr('content', link);
