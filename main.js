@@ -1,18 +1,14 @@
 var tour = "Landmarks";
 var filename = filename(tour);
 
+function get_hash_int() {
+  return parseInt(window.location.hash.substring(1)) || 0;
+}
 $(document).ready(function () {
 
   var data;
   var tourMap = initializeMap();
   loadFile();
-
-  $(document).on('change', '#select-tour', function () {
-    filename = 'data/' + $('#select-tour').val() + '.csv';
-    console.log(filename);
-    window.location.hash = '#' + 0;
-    loadFile();
-  });
 
   function loadFile() {
     d3.csv(filename, function (data) {
@@ -42,7 +38,7 @@ $(document).ready(function () {
   });
 
   function prevPlace() {
-    var prev = parseInt(window.location.hash.substring(1)) - 1;
+    var prev = get_hash_int() - 1;
     if (prev < 0) {
       prev = tourData.length - 1;
     }
@@ -50,7 +46,7 @@ $(document).ready(function () {
   }
 
   function nextPlace() {
-    var next = parseInt(window.location.hash.substring(1)) + 1;
+    var next = get_hash_int() + 1;
     if (next > tourData.length - 1) {
       next = 0;
     }
@@ -95,7 +91,7 @@ function populateMap(tourMap, tourData) {
 }
 
 function setHereMarker(tourMap, tourData) {
-  var locationNumber = parseInt(window.location.hash.substring(1));
+  var locationNumber = get_hash_int();
   var currentLocation = L.latLng(tourData[locationNumber].lat, tourData[locationNumber].lng);
   var hereIcon = L.icon({
     iconUrl: '../images/capital-walker.png',
