@@ -48,7 +48,6 @@ select {
 
 #return-link {
   float: right;
-  font-style: none;
   color: #E70012;
   font-family: Arial;
   font-weight: bold;
@@ -78,7 +77,6 @@ select {
   padding-top: 1em;
   padding-bottom: 20px;
   border-bottom: 2px solid #ccc;
-
 }
 
 /* Quote */
@@ -87,7 +85,7 @@ select {
   clear: both;
   width: 100%;
   overflow: auto;
-  margin: 1em 0;
+  margin: 1em 0 0 0;
 }
 
 #quote, #preview {
