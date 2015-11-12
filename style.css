@@ -88,7 +88,7 @@ select {
   line-height: 1.3em;
   font-size: 1.2em;
   font-style: italic;
-  color: #666;
+  color: rgb(10, 10, 10);
   text-align: justify;
   margin-bottom: .5em;
 }
@@ -128,7 +128,7 @@ img#quote-bottom {
 
 #meta {
   float: right;
-  width: 40%;
+  width: 250px;
 }
 
 #context {
@@ -161,8 +161,8 @@ img#quote-bottom {
 }
 
 #map {
-  width: 380px;
-  height: 360px;
+  width: 420px;
+  height: 300px;
   border: 0;
   padding: 0;
 }
