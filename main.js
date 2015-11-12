@@ -128,7 +128,10 @@ function loadTour(data) {
 function go(i) {
   if (typeof i != 'number') i = +i;
   index = i;
+
   var link = "http://capital-newyork.com/" + fileize(tourData[index]['Tour']) + "/tour.html#" + i;
+  var encoded = "http%3A%2F%2Fcapital-newyork.com%2F" + fileize(tourData[index]['Tour']) + "%2Flandmarks%2Ftour.html%23" + i;
+  var location = tourData[index]['Location'] + " via";
 
   $("#map").attr('src', tourData[index].embed);
   $("#tour-title").html(tourData[index]['Tour']);
@@ -138,6 +141,8 @@ function go(i) {
   $("#source").html(tourData[index]['Source']);
   $("#location").html(tourData[index]['Location']);
   $("#location-link").attr("href", link);
+
+  $("#tweet").attr("href", "https://twitter.com/intent/tweet?text="+ location + "&url=" + encoded);
 
   $("#quote").hide();
   $("#preview").show();
