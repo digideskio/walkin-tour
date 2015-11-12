@@ -11,20 +11,14 @@ body {
 
 #logo {
   padding: 30px 0 10px 0;
-  border-bottom: black solid;
 }
 
 #logo img {
   width: 100%;
 }
 
-#subheading {
-  font-family: Times;
-  font-style: italic;
-  font-size: 19px;
-  text-align: center;
-  letter-spacing: 0.02em;
-  margin: 1em 0;
+#subheading img {
+  width: 100%;
 }
 
 .small {
