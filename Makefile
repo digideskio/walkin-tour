@@ -2,6 +2,7 @@
 
 compile:
 	mkdir -p tmp
+	cp 404.html tmp/
 	cp style.css tmp/
 	cp embed.css tmp/
 	cp main.js tmp/
