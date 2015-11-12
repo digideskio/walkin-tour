@@ -59,8 +59,8 @@ $(document).ready(function () {
 });
 
 function initializeMap() {
-  var ctrLat = 40.70702792793145;
-  var ctrLng = -73.99036895060463;
+  var ctrLat = 40.768243;
+  var ctrLng = -73.975664;
   var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
 
   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
