@@ -8,6 +8,7 @@ compile:
 	cp main.js tmp/
 	cp -R landmarks tmp/
 	cp -R learning-to-read-new-york tmp/
+	cp -R arts-letters tmp/
 	cp -R images tmp/
 	ruby data/parse.rb
 
