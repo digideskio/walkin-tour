@@ -1,11 +1,11 @@
-var tour = "Landmarks";
+var tour = $('#tour-title').text();
 var filename = filename(tour);
 
 function get_hash_int() {
   return parseInt(window.location.hash.substring(1)) || 0;
 }
-$(document).ready(function () {
 
+$(document).ready(function () {
   var data;
   var tourMap = initializeMap();
   loadFile();

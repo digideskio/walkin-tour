@@ -13,12 +13,16 @@ body {
   padding: 30px 0 10px 0;
 }
 
-#logo img {
+#presented-by img, #logo img {
   width: 100%;
 }
 
 #subheading img {
   width: 100%;
+}
+
+#subheading {
+  border-top: 3px solid black;
 }
 
 .small {
