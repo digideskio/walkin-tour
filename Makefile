@@ -7,6 +7,7 @@ compile:
 	cp embed.css tmp/
 	cp main.js tmp/
 	cp -R landmarks tmp/
+	cp -R learning-to-read-new-york tmp/
 	cp -R images tmp/
 	ruby data/parse.rb
 
