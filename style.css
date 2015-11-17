@@ -44,6 +44,25 @@ select {
   width: 300px;
 }
 
+
+/* Tour title */
+
+#tour-title img {
+  width: 100%;
+}
+
+#tour-title {
+  float: left;
+  width: 50%;
+  padding: 1em 0;
+  font-size: 13px;
+  font-family: Arial;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin: .5em 0em;
+}
+
 #return-link {
   float: right;
   color: #E70012;
@@ -53,22 +72,8 @@ select {
   text-transform: uppercase;
   font-size: 12px;
   letter-spacing: .16em;
-  margin: 0 0 2em 0;
-}
-
-/* Tour title */
-
-#tour-title img {
-  width: 100%;
-}
-
-#tour-title {
   padding: 1em 0;
-  font-size: 13px;
-  font-family: Arial;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: .16em;
+  margin: .5em 0em;
 }
 
 #content-box {
@@ -180,6 +185,7 @@ img#quote-bottom {
 }
 
 #nav {
+  clear: both;
   border-bottom: 2px solid #ccc;
   border-top: 2px solid #ccc;
   position: relative;

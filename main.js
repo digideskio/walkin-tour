@@ -14,6 +14,8 @@ $(document).ready(function () {
     d3.csv(filename, function (data) {
       var tourData = loadTour(data);
       populateMap(tourMap, tourData);
+      var initialLocation = L.latLng(tourData[0].lat, tourData[0].lng);
+      tourMap.setView(initialLocation);
       go(window.location.hash.substring(1));
 
       $(window).on('hashchange', function () {
@@ -58,6 +60,8 @@ function initializeMap() {
   var ctrLat = 40.768243;
   var ctrLng = -73.975664;
   var tourMap = L.map('tour-map').setView([ctrLat, ctrLng], 13);
+
+  tourMap.scrollWheelZoom.disable();
 
   L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
