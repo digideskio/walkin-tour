@@ -129,8 +129,8 @@ function go(i) {
   if (typeof i != 'number') i = +i;
   index = i;
 
-  var link = "http://capital-newyork.com/" + fileize(tourData[index]['Tour']) + "/tour.html#" + i;
-  var encoded = "http%3A%2F%2Fcapital-newyork.com%2F" + fileize(tourData[index]['Tour']) + "%2Ftour.html%23" + i;
+  var link = "http://capital-newyork.com/" + fileize(tourData[index]['Tour'].replace(/[^a-zA-Z0-9]/g, ' ')) + "/tour.html#" + i;
+  var encoded = "http%3A%2F%2Fcapital-newyork.com%2F" + fileize(tourData[index]['Tour'].replace(/[^a-zA-Z0-9]/g, ' ')) + "%2Ftour.html%23" + i;
   var location = tourData[index]['Location'] + " via";
   var source = tourData[index]['Source'];
   var preview = tourData[index]['Preview'];
@@ -153,7 +153,7 @@ function go(i) {
   $("#facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=" + encoded);
   $('meta[property="og:title"]').attr('content', tourData[index]['Location']);
   $('meta[property="og:url"]').attr('content', link);
-  //$('meta[property="og:image"]').attr('content', 'hi');
+
   $("#quote").hide();
   $("#preview").show();
   $("#read-more").html("Read more");
@@ -180,6 +180,7 @@ function expand() {
 function fileize(title) {
   return title.replace(/\s+/g, '-').toLowerCase();
 }
+
 function filename(title) {
   return "../data/" + fileize(title) + ".csv";
 }
