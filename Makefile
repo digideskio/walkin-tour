@@ -6,6 +6,7 @@ compile:
 	cp style-v1.css tmp/
 	cp embed.css tmp/
 	cp main-v1.js tmp/
+	cp -R ghost-town tmp/
 	cp -R landmarks tmp/
 	cp -R learning-to-read-new-york tmp/
 	cp -R arts-letters tmp/
