@@ -18,14 +18,13 @@ body {
 }
 
 #subheading img {
-width: 100%;
+width: 200px;
+float: left;
+margin-top: 6px;
 }
 
 #subheading {
   border-top: 1.5px solid black;
-  width: 200px;
-  margin-top: 6px
-  float: left;
 }
 
 .small {
