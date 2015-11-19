@@ -23,6 +23,10 @@ float: left;
 margin-top: 12px;
 }
 
+#subheading {
+  border-top: 1px solid black;
+}
+
 
 .small {
   font-size: 10px;
