@@ -247,12 +247,21 @@ img#quote-bottom {
   padding-bottom: 2em;
 }
 
-img.footer-logo  {
-  float: right;
-  height: 60px;
-}
+.footer-logo {
+    float: right;
+    width: 90px;
+    height: 90px;
+    background-image: url("/images/capital-books-2.png");
+    background-size: contain;
+    a {
+      display: block;
+      width: 90px;
+      height: 90px;
+    }
+ }
+
 
 img#gothamist-footer-logo.footer-logo {
-  height: 45px;
+  height: 65px;
   margin: .5em;
 }
