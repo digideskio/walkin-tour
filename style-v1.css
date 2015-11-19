@@ -241,24 +241,16 @@ img#quote-bottom {
 #footer p {
   float: left;
   font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   color: #E70012;
   margin: 1em;
   padding-bottom: 2em;
 }
 
-.footer-logo {
-    float: right;
-    width: 90px;
-    height: 90px;
-    background-image: url("/images/capital-books-2.png");
-    background-size: contain;
-    a {
-      display: block;
-      width: 90px;
-      height: 90px;
-    }
- }
+img.footer-logo  {
+  float: right;
+  height: 100px;
+}
 
 
 img#gothamist-footer-logo.footer-logo {
