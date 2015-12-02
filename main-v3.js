@@ -136,7 +136,6 @@ function go(i) {
   var preview = tourData[index]['Preview'];
 
   $("#map").attr('src', tourData[index].embed);
-  $("#tour-title").html(tourData[index]['Tour']);
   $("#quote").html(tourData[index]['Quote']);
   $("#preview").html(tourData[index]['Preview'] + '...');
   $("#context").html(tourData[index]['Context']);
