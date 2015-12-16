@@ -132,6 +132,15 @@ img#quote-top, #quote-bottom {
   display: block;
 }
 
+#home {
+  float: right;
+  width: 700px;
+}
+
+#home a img {
+  margin-right: 25px;
+}
+
 img#quote-bottom {
   float: right;
 }
