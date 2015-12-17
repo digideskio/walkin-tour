@@ -7,6 +7,7 @@ body {
   max-width: 700px;
   margin: auto;
   background-color: #fff;
+  position: relative;
 }
 
 #logo {
@@ -282,6 +283,15 @@ img#gothamist-footer-logo.footer-logo {
   height: 35px;
 }
 
+
+
+.nav a {
+  position: absolute;
+}
+
+.nav img {
+  height: 45px;
+}
 #nav {
   position: relative;
 }
