@@ -281,3 +281,14 @@ img#gothamist-footer-logo.footer-logo {
 #toc img {
   height: 35px;
 }
+
+#nav {
+  position: relative;
+}
+
+#nav a {
+  position: absolute;
+}
+#nav img {
+  height: 35px;
+}
