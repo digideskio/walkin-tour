@@ -270,3 +270,14 @@ img#gothamist-footer-logo.footer-logo {
   margin: .5em;
 }
 
+#toc {
+  position: relative;
+  height: 400px;
+}
+
+#toc a {
+  position: absolute;
+}
+#toc img {
+  height: 35px;
+}
